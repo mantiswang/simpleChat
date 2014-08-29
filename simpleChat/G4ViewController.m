@@ -8,7 +8,13 @@
 
 #import "G4ViewController.h"
 
+#import "EaseMob.h"
+
 @interface G4ViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *UserName;
+@property (weak, nonatomic) IBOutlet UITextField *PassWord;
+@property (weak, nonatomic) IBOutlet UIButton *registerBtn;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
 @end
 
@@ -18,6 +24,29 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (IBAction)loginAction:(id)sender {
+    
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:_UserName.text
+                                                        password:_PassWord.text
+                                                      completion:
+     ^(NSDictionary *loginInfo, EMError *error) {
+         if (!error) {
+             NSLog(@"登录成功");
+         }
+     } onQueue:nil];
+    
+}
+
+- (IBAction)registerAction:(id)sender {
+    
+    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:_UserName.text password:_PassWord.text withCompletion:^(NSString *username, NSString *password, EMError *error) {
+        if (!error) {
+            NSLog(@"注册成功");
+        }
+    } onQueue:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
