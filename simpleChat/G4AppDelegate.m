@@ -16,6 +16,7 @@
 #import "UMSocialQQHandler.h"
 
 #define UmengAppkey      (@"5401592ffd98c50365005723")
+#import "UMSocialSinaHandler.h"
 
 @implementation G4AppDelegate
 
@@ -127,7 +128,5 @@
     //设置支持没有客户端情况下使用SSO授权
     [UMSocialQQHandler setSupportWebView:YES];
     
-    
 }
-
 @end

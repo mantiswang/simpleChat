@@ -19,6 +19,7 @@
 		8968AD8E19B62AFB0089F67D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8968AD8119B62AFB0089F67D /* libWeChatSDK.a */; };
 		8968AD9319B62E870089F67D /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8968AD9019B62E870089F67D /* libMobClickLibrary.a */; };
 		8968AD9519B62FFA0089F67D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8968AD9419B62FFA0089F67D /* libsqlite3.dylib */; };
+
 		89CA109619AF851900E00AA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CA109519AF851900E00AA5 /* Foundation.framework */; };
 		89CA109819AF851900E00AA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CA109719AF851900E00AA5 /* CoreGraphics.framework */; };
 		89CA109A19AF851900E00AA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CA109919AF851900E00AA5 /* UIKit.framework */; };
@@ -240,9 +241,12 @@
 				89CA113619AF867C00E00AA5 /* CFNetwork.framework in Frameworks */,
 				89CA113419AF866D00E00AA5 /* CoreData.framework in Frameworks */,
 				89CA113219AF866600E00AA5 /* libiconv.dylib in Frameworks */,
+				188E4A3419B4507A00E854CF /* libSocialWechat.a in Frameworks */,
 				89CA112E19AF864300E00AA5 /* libz.dylib in Frameworks */,
 				8968AD8E19B62AFB0089F67D /* libWeChatSDK.a in Frameworks */,
 				89CA112A19AF862900E00AA5 /* libresolv.dylib in Frameworks */,
+				188E4A3519B4507A00E854CF /* libWeChatSDK.a in Frameworks */,
+				188E4A3119B4507A00E854CF /* libUMSocial_Sdk_ScreenShot_1.0.a in Frameworks */,
 				89CA113019AF864A00E00AA5 /* libstdc++.dylib in Frameworks */,
 				89CA112C19AF863000E00AA5 /* libxml2.dylib in Frameworks */,
 				89CA112719AF861500E00AA5 /* libEaseMobClientSDKLite.a in Frameworks */,
@@ -336,6 +340,7 @@
 				8968AD9219B62E870089F67D /* MobClickSocialAnalytics.h */,
 			);
 			path = UMAnalytics_Sdk_3.1.2;
+
 			sourceTree = "<group>";
 		};
 		89CA108919AF851900E00AA5 = {
@@ -739,6 +744,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = wangyue;
 				TargetAttributes = {
+					89CA109119AF851900E00AA5 = {
+						DevelopmentTeam = EG6RB5FL23;
+					};
 					89CA10B219AF851900E00AA5 = {
 						TestTargetID = 89CA109119AF851900E00AA5;
 					};
@@ -829,6 +837,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1865548019B19B7200D83395 /* UMSocialLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1865548119B19B7200D83395 /* en */,
+				1865549A19B19B7200D83395 /* zh-Hans */,
+			);
+			name = UMSocialLocalizable.strings;
+			sourceTree = "<group>";
+		};
 		89CA109E19AF851900E00AA5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -897,7 +914,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -929,7 +946,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
