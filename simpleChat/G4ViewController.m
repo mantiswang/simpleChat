@@ -10,6 +10,8 @@
 
 #import "EaseMob.h"
 
+#import "UMSocialSnsPlatformManager.h"
+
 @interface G4ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *PassWord;
@@ -24,6 +26,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+
+- (IBAction)qqLogin:(id)sender {
+
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        NSLog(@"response is %@",response);
+    });
+}
+
+- (IBAction)sinaLogin:(id)sender {
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        NSLog(@"response is %@",response);
+    });
 }
 
 - (IBAction)loginAction:(id)sender {

@@ -8,6 +8,14 @@
 
 #import "G4AppDelegate.h"
 #import "EaseMob.h"
+#import "UMSocial.h"
+#import "MobClick.h"
+
+#import "UMSocialWechatHandler.h"
+#import "UMSocialSinaHandler.h"
+#import "UMSocialQQHandler.h"
+
+#define UmengAppkey      (@"5401592ffd98c50365005723")
 
 @implementation G4AppDelegate
 
@@ -19,17 +27,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.backgroundColor = [UIColor whiteColor];
     
-	// 真机的情况下,notification提醒设置
-	UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge |
-	UIRemoteNotificationTypeSound |
-	UIRemoteNotificationTypeAlert;
-	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
-    
-	//注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
-	NSString *apnsCertName = @"chatdemoui";
-	[[EaseMob sharedInstance] registerSDKWithAppKey:@"ywang#sandbox" apnsCertName:apnsCertName];
-	[[EaseMob sharedInstance] enableBackgroundReceiveMessage];
-	[[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    //UMeng config
+    [self umengConfig];
+    //环信config
+	[self easeMobConfig:application launchOptions:launchOptions];
     
     
     self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateInitialViewController];
@@ -64,6 +65,69 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [UMSocialSnsService handleOpenURL:url];
+}
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return  [UMSocialSnsService handleOpenURL:url];
+}
+
+
+
+-(void)easeMobConfig:(UIApplication*)application launchOptions:(NSDictionary *)launchOptions
+{
+    // 真机的情况下,notification提醒设置
+	UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge |
+	UIRemoteNotificationTypeSound |
+	UIRemoteNotificationTypeAlert;
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+    
+	//注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
+	NSString *apnsCertName = @"chatdemoui";
+	[[EaseMob sharedInstance] registerSDKWithAppKey:@"ywang#sandbox" apnsCertName:apnsCertName];
+	[[EaseMob sharedInstance] enableBackgroundReceiveMessage];
+	[[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+}
+
+-(void)umengConfig
+{
+    //UMeng 统计
+    [MobClick startWithAppkey:UmengAppkey reportPolicy:BATCH channelId:@"ywang"];
+    
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    [MobClick setLogEnabled:YES];
+    
+    //打开调试log的开关
+    [UMSocialData openLog:YES];
+    
+    //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
+    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
+    
+    //设置友盟社会化组件appkey
+    [UMSocialData setAppKey:UmengAppkey];
+    
+    //设置微信AppId，设置分享url，默认使用友盟的网址
+//    [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];
+    
+    //打开新浪微博的SSO开关
+    [UMSocialSinaHandler openSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    
+    
+    //设置分享到QQ空间的应用Id，和分享url 链接
+//    [UMSocialQQHandler setQQWithAppId:@"101124860" appKey:@"9b482ce0adc63f78e94b5c3f0d3af33d" url:@"http://www.umeng.com/social"];
+    //设置支持没有客户端情况下使用SSO授权
+    [UMSocialQQHandler setSupportWebView:YES];
+    
+    
 }
 
 @end
