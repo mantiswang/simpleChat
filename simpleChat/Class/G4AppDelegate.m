@@ -27,7 +27,7 @@
 #import "APIKey.h"
 
 
-#import "G4MainMapVC.h"
+#import "MainViewController.h"
 
 @implementation G4AppDelegate
 
@@ -45,26 +45,58 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+
     
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.backgroundColor = [UIColor whiteColor];
     
+    [self registerNotification];
+    //设置AESKey
+    [[NSUserDefaults standardUserDefaults] setAESKey:(NSString*)AESKeyString];
+    
     //UMeng config
     [self umengConfig];
-    //环信config
-	[self easeMobConfig:application launchOptions:launchOptions];
+    
     //高德地图
     [self aMapConfig];
+
+    
+#if !TARGET_IPHONE_SIMULATOR
+    UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge |
+    UIRemoteNotificationTypeSound |
+    UIRemoteNotificationTypeAlert;
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+#endif
+    
+
+
+    
+    //环信config
+	[self easeMobConfig:application launchOptions:launchOptions];
+    
+
+    //以下一行代码的方法里实现了自动登录，异步登录，需要监听[didLoginWithInfo: error:]
+    //demo中此监听方法在MainViewController中
+    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    
+//#warning 注册为SDK的ChatManager的delegate (及时监听到申请和通知)
+//    [[EaseMob sharedInstance].chatManager removeDelegate:self];
+//    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
+    
+#warning 如果使用MagicalRecord, 要加上这句初始化MagicalRecord
+    //demo coredata, .pch中有相关头文件引用
+    [MagicalRecord setupCoreDataStackWithStoreNamed:[NSString stringWithFormat:@"%@.sqlite", @"UIDemo"]];
     
     
-    self.window.rootViewController = [[G4MainMapVC alloc] init];
+    [self checkLogin];
     
 	[self.window makeKeyAndVisible];
     
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -106,7 +138,31 @@
     return  [UMSocialSnsService handleOpenURL:url];
 }
 
+-(void)registerNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loginStateChange:)
+                                                 name:KNOTIFICATION_LOGINCHANGE
+                                               object:nil];
+}
 
+-(void)loginStateChange:(NSNotification *)notification
+{
+    BOOL loginSuccess = [notification.object boolValue];
+    if(loginSuccess)
+    {
+        MainViewController* _mainController = [[MainViewController alloc] init];
+        UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:_mainController];
+        self.window.rootViewController = nav;
+        
+        [nav setNavigationBarHidden:YES];
+        [nav setNavigationBarHidden:NO];
+    }
+    else
+    {
+        
+    }
+}
 
 -(void)easeMobConfig:(UIApplication*)application launchOptions:(NSDictionary *)launchOptions
 {
@@ -117,10 +173,20 @@
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
     
 	//注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
-	NSString *apnsCertName = @"chatdemoui";
+#warning SDK注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
+    NSString *apnsCertName = nil;
+#if DEBUG
+    apnsCertName = @"chatdemoui_dev";
+#else
+    apnsCertName = @"chatdemoui";
+#endif
+    
 	[[EaseMob sharedInstance] registerSDKWithAppKey:@"ywang#sandbox" apnsCertName:apnsCertName];
 	[[EaseMob sharedInstance] enableBackgroundReceiveMessage];
 	[[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+#if DEBUG
+    [[EaseMob sharedInstance] enableUncaughtExceptionHandler];
+#endif
 }
 
 /**
@@ -173,6 +239,38 @@
     [MAMapServices sharedServices].apiKey = (NSString *)AMapAPIKey;
 }
 
+
+-(void)checkLogin
+{
+    NSString* uname = [[NSUserDefaults standardUserDefaults] decryptedValueForKey:kSDKUsername];
+    NSString* pwd = [[NSUserDefaults standardUserDefaults] decryptedValueForKey:kSDKPassword];
+
+    if(uname != nil && pwd != nil)//登录
+    {
+        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uname
+                                                            password:pwd
+                                                          completion:
+         ^(NSDictionary *loginInfo, EMError *error) {
+             if (!error) {
+                 MainViewController* _mainController = [[MainViewController alloc] init];
+                 UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:_mainController];
+                 self.window.rootViewController = nav;
+                 
+                 [nav setNavigationBarHidden:YES];
+                 [nav setNavigationBarHidden:NO];
+             }
+             else //登陆失败
+             {
+                 [self showLogin];
+             }
+         } onQueue:nil];
+    }
+    else
+    {
+        [self showLogin];
+    }
+    
+}
 
 -(void)showLogin
 {

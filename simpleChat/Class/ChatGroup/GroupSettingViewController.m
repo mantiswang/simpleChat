@@ -87,15 +87,15 @@
             _switch.frame = CGRectMake(self.tableView.frame.size.width - (_switch.frame.size.width + 10), (cell.contentView.frame.size.height - _switch.frame.size.height) / 2, _switch.frame.size.width, _switch.frame.size.height);
             [_switch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
         }
-        BOOL isOn = _group.isPushNotificationEnabled;
-        [_switch setOn:isOn animated:YES];
-        
-        if (isOn) {
-            cell.textLabel.text = @"接收并提示群消息";
-        }
-        else{
-            cell.textLabel.text = @"只接收不提示群消息";
-        }
+//        BOOL isOn = _group.isPushNotificationEnabled;
+        [_switch setOn:YES animated:YES];
+        cell.textLabel.text = @"接收并提示群消息";
+//        if (isOn) {
+//            cell.textLabel.text = @"接收并提示群消息";
+//        }
+//        else{
+//            cell.textLabel.text = @"只接收不提示群消息";
+//        }
         
         [cell.contentView addSubview:_switch];
         [cell.contentView bringSubviewToFront:_switch];
@@ -128,16 +128,17 @@
 {
     __weak typeof(self) weakSelf = self;
     [self showHudInView:self.view hint:@"设置属性"];
-    [[EaseMob sharedInstance].chatManager asyncIgnoreGroupPushNotification:_group.groupId isIgnore:isIgnore completion:^(NSArray *ignoreGroupsList, EMError *error) {
-        [weakSelf hideHud];
-        if (!error) {
-            [weakSelf showHint:@"设置成功"];
-            [weakSelf.tableView reloadData];
-        }
-        else{
-            [weakSelf showHint:@"设置失败"];
-        }
-    } onQueue:nil];
+//    [[EaseMob sharedInstance].chatManager async]
+//    [[EaseMob sharedInstance].chatManager asyncIgnoreGroupPushNotification:_group.groupId isIgnore:isIgnore completion:^(NSArray *ignoreGroupsList, EMError *error) {
+//        [weakSelf hideHud];
+//        if (!error) {
+//            [weakSelf showHint:@"设置成功"];
+//            [weakSelf.tableView reloadData];
+//        }
+//        else{
+//            [weakSelf showHint:@"设置失败"];
+//        }
+//    } onQueue:nil];
 }
 
 #pragma mark - action

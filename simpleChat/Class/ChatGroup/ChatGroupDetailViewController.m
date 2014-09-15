@@ -546,11 +546,11 @@
 
 //设置群组
 - (void)configureAction {
-// todo
-    [[[EaseMob sharedInstance] chatManager] asyncIgnoreGroupPushNotification:_chatGroup.groupId
-                                                                    isIgnore:_chatGroup.isPushNotificationEnabled];
-
-    return;
+//// todo
+//    [[[EaseMob sharedInstance] chatManager] asyncIgnoreGroupPushNotification:_chatGroup.groupId
+//                                                                    isIgnore:_chatGroup.isPushNotificationEnabled];
+//
+//    return;
     UIViewController *viewController = [[UIViewController alloc] init];
     [self.navigationController pushViewController:viewController animated:YES];
 }

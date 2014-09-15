@@ -64,6 +64,7 @@
     [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:uName password:pwd withCompletion:^(NSString *username, NSString *password, EMError *error) {
         if (!error) {
             NSLog(@"注册成功");
+            [this loginEaseMob:username password:password];
             return ;
         }
         
@@ -82,8 +83,9 @@
      ^(NSDictionary *loginInfo, EMError *error) {
          if (!error) {
              NSLog(@"登录成功");
+             [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
+             
          }
-         NSLog(@"%@", error.debugDescription);
      } onQueue:nil];
     
 }

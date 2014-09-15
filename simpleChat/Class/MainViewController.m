@@ -138,8 +138,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     _chatListVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"会话"
                                                            image:nil
                                                              tag:0];
-    [_chatListVC.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_chatsHL"]
-                         withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_chats"]];
+    [_chatListVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"tabbar_chatsHL"]];
+    [_chatListVC.tabBarItem setImage:[UIImage imageNamed:@"tabbar_chats"]];
     [self unSelectedTapTabBarItems:_chatListVC.tabBarItem];
     [self selectedTapTabBarItems:_chatListVC.tabBarItem];
     
@@ -147,8 +147,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     _contactsVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"通讯录"
                                                            image:nil
                                                              tag:1];
-    [_contactsVC.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_contactsHL"]
-                         withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_contacts"]];
+    [_contactsVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"tabbar_contactsHL"]];
+    [_contactsVC.tabBarItem setImage:[UIImage imageNamed:@"tabbar_contacts"]];
     [self unSelectedTapTabBarItems:_contactsVC.tabBarItem];
     [self selectedTapTabBarItems:_contactsVC.tabBarItem];
     
@@ -156,8 +156,9 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     _settingsVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"设置"
                                                            image:nil
                                                              tag:2];
-    [_settingsVC.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_settingHL"]
-                         withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_setting"]];
+    [_settingsVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"tabbar_settingHL"]];
+    [_settingsVC.tabBarItem setImage:[UIImage imageNamed:@"tabbar_setting"]];
+
     _settingsVC.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self unSelectedTapTabBarItems:_settingsVC.tabBarItem];
     [self selectedTapTabBarItems:_settingsVC.tabBarItem];
@@ -169,7 +170,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 -(void)unSelectedTapTabBarItems:(UITabBarItem *)tabBarItem
 {
     [tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                        [UIFont systemFontOfSize:14], UITextAttributeFont,[UIColor whiteColor],UITextAttributeTextColor,
+                                        [UIFont systemFontOfSize:14], NSFontAttributeName,[UIColor whiteColor],NSForegroundColorAttributeName,
                                         nil] forState:UIControlStateNormal];
 }
 
@@ -177,7 +178,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 {
     [tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [UIFont systemFontOfSize:14],
-                                        UITextAttributeFont,[UIColor colorWithRed:0.393 green:0.553 blue:1.000 alpha:1.000],UITextAttributeTextColor,
+                                        NSFontAttributeName,[UIColor colorWithRed:0.393 green:0.553 blue:1.000 alpha:1.000],NSForegroundColorAttributeName,
                                         nil] forState:UIControlStateSelected];
 }
 
@@ -230,13 +231,15 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 - (BOOL)needShowNotification:(NSString *)fromChatter
 {
     BOOL ret = YES;
-    NSArray *igGroupIds = [[EaseMob sharedInstance].chatManager ignoredGroupList];
-    for (NSString *str in igGroupIds) {
-        if ([str isEqualToString:fromChatter]) {
-            ret = NO;
-            break;
-        }
-    }
+    
+    //FIXME 注释 组群ignore
+//    NSArray *igGroupIds = [[EaseMob sharedInstance].chatManager ignoredGroupList];
+//    for (NSString *str in igGroupIds) {
+//        if ([str isEqualToString:fromChatter]) {
+//            ret = NO;
+//            break;
+//        }
+//    }
     
     if (ret) {
         EMPushNotificationOptions *options = [[EaseMob sharedInstance].chatManager pushNotificationOptions];

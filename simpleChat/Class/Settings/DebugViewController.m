@@ -84,8 +84,8 @@
     if (indexPath.row == 0)
     {
         cell.textLabel.text = @"SDK 版本";
-        NSString *ver = [[EaseMob sharedInstance] sdkVersion];
-        cell.detailTextLabel.text = ver;
+//        NSString *ver = [[EaseMob sharedInstance] sdkVersion];
+        cell.detailTextLabel.text = @"2.0";
     }
     
     return cell;

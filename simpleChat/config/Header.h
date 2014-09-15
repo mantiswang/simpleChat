@@ -13,4 +13,15 @@
 #import "EaseMob.h"
 #import "G4Define.h"
 
+#import "WCAlertView.h"
+#import "TTGlobalUICommon.h"
+#import "UIViewController+HUD.h"
+#import "UIViewController+DismissKeyboard.h"
+#import "NSString+Valid.h"
+
+#define MR_SHORTHAND
+#import "CoreData+MagicalRecord.h"
+
+#import "NSUserDefaults+AESEncryptor.h"
+
 #endif

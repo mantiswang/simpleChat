@@ -18,4 +18,6 @@ const static NSString *AMapAPIKey = @"8fc1c1505731a93d55c78fe791d1bb2a";
  */
 const static NSString *UMengAPIKey = @"5401592ffd98c50365005723";
 
+const static NSString *AESKeyString = @"I am a foolish man";
+
 #endif
