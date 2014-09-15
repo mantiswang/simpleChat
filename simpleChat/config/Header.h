@@ -11,5 +11,6 @@
 
 #import "UMSocial.h"
 #import "EaseMob.h"
+#import "G4Define.h"
 
 #endif

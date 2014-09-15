@@ -9,6 +9,5 @@
 #ifndef simpleChat_Config_h
 #define simpleChat_Config_h
 
-#define UmengAppkey                (@"5401592ffd98c50365005723")
 
 #endif
