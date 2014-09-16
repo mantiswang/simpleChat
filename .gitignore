@@ -4,11 +4,11 @@
 *.pbxuser
 *.xcbkptlist
 *.xcscheme
-*.xcworkspacedata
-*.xcuserstate
+#*.xcworkspacedata
+#*.xcuserstate
 xcschememanagement.plist
 build/
 .DS_Store
 ._.*
-xcuserdata/
+#xcuserdata/
 DerivedData/
