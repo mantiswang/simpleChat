@@ -207,12 +207,12 @@
             NSString *subStr = [chatText substringFromIndex:chatText.length-2];
             if ([(DXFaceView *)self.faceView stringIsFace:subStr]) {
                 self.inputTextView.text = [chatText substringToIndex:chatText.length-2];
-                
-                return;
+                //参考 http://faq.easemob.com/question/80
+                //进行修改
             }
         }
         
-        if (chatText.length > 0) {
+        else if (chatText.length > 0) {
             self.inputTextView.text = [chatText substringToIndex:chatText.length-1];
         }
     }

@@ -28,6 +28,8 @@
 
 
 #import "MainViewController.h"
+#import "ApplyViewController.h"
+
 
 @implementation G4AppDelegate
 
@@ -81,14 +83,15 @@
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
 //#warning 注册为SDK的ChatManager的delegate (及时监听到申请和通知)
-//    [[EaseMob sharedInstance].chatManager removeDelegate:self];
-//    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
+    [[EaseMob sharedInstance].chatManager removeDelegate:self];
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
     
 #warning 如果使用MagicalRecord, 要加上这句初始化MagicalRecord
     //demo coredata, .pch中有相关头文件引用
-    [MagicalRecord setupCoreDataStackWithStoreNamed:[NSString stringWithFormat:@"%@.sqlite", @"UIDemo"]];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:[NSString stringWithFormat:@"%@.sqlite", @"G4simpleChat"]];
     
-    
+
+
     [self checkLogin];
     
 	[self.window makeKeyAndVisible];
@@ -96,34 +99,6 @@
     return YES;
 }
 
-
-
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
 
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
@@ -277,5 +252,176 @@
     self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateInitialViewController];
 }
 
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    if (_mainController) {
+        [_mainController jumpToChatList];
+    }
+    
+#warning SDK方法调用
+    [[EaseMob sharedInstance] application:application didReceiveRemoteNotification:userInfo];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    if (_mainController) {
+        [_mainController jumpToChatList];
+    }
+#warning SDK方法调用
+    [[EaseMob sharedInstance] application:application didReceiveLocalNotification:notification];
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+#warning SDK方法调用
+    [[EaseMob sharedInstance] applicationWillResignActive:application];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"applicationDidEnterBackground" object:nil];
+#warning SDK方法调用
+    [[EaseMob sharedInstance] applicationDidEnterBackground:application];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+#warning SDK方法调用
+    [[EaseMob sharedInstance] applicationWillEnterForeground:application];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
+#warning SDK方法调用
+    [[EaseMob sharedInstance] applicationDidBecomeActive:application];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+#warning SDK方法调用
+    [[EaseMob sharedInstance] applicationWillTerminate:application];
+}
+
+
+
+#pragma mark -  
+
+
+#pragma mark - IChatManagerDelegate 好友变化
+
+- (void)didReceiveBuddyRequest:(NSString *)username
+                       message:(NSString *)message
+{
+    if (!username) {
+        return;
+    }
+    if (!message) {
+        message = [NSString stringWithFormat:@"%@ 添加你为好友", username];
+    }
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":username, @"username":username, @"applyMessage":message, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleFriend]}];
+    [[ApplyViewController shareController] addNewApply:dic];
+    if (_mainController) {
+        [_mainController setupUntreatedApplyCount];
+    }
+}
+
+#pragma mark - IChatManagerDelegate 群组变化
+
+- (void)didReceiveGroupInvitationFrom:(NSString *)groupId
+                              inviter:(NSString *)username
+                              message:(NSString *)message
+{
+    if (!groupId || !username) {
+        return;
+    }
+    
+    NSString *groupName = groupId;
+    if (!message || message.length == 0) {
+        message = [NSString stringWithFormat:@"%@ 邀请你加入群组\'%@\'", username, groupName];
+    }
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":groupName, @"groupId":groupId, @"username":username, @"applyMessage":message, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleGroupInvitation]}];
+    [[ApplyViewController shareController] addNewApply:dic];
+    if (_mainController) {
+        [_mainController setupUntreatedApplyCount];
+    }
+}
+
+//接收到入群申请
+- (void)didReceiveApplyToJoinGroup:(NSString *)groupId
+                         groupname:(NSString *)groupname
+                     applyUsername:(NSString *)username
+                            reason:(NSString *)reason
+                             error:(EMError *)error
+{
+    if (!groupId || !username) {
+        return;
+    }
+    
+    if (!reason || reason.length == 0) {
+        reason = [NSString stringWithFormat:@"%@ 申请加入群组\'%@\'", username, groupname];
+    }
+    else{
+        reason = [NSString stringWithFormat:@"%@ 申请加入群组\'%@\'：%@", username, groupname, reason];
+    }
+    
+    if (error) {
+        NSString *message = [NSString stringWithFormat:@"发送申请失败:%@\n原因：%@", reason, error.description];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"错误" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    else{
+        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":groupname, @"groupId":groupId, @"username":username, @"groupname":groupname, @"applyMessage":reason, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleJoinGroup]}];
+        [[ApplyViewController shareController] addNewApply:dic];
+        if (_mainController) {
+            [_mainController setupUntreatedApplyCount];
+        }
+    }
+}
+
+- (void)didReceiveRejectApplyToJoinGroupFrom:(NSString *)fromId
+                                   groupname:(NSString *)groupname
+                                      reason:(NSString *)reason
+{
+    if (!reason || reason.length == 0) {
+        reason = [NSString stringWithFormat:@"被拒绝加入群组\'%@\'", groupname];
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"申请提示" message:reason delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alertView show];
+}
+
+- (void)group:(EMGroup *)group didLeave:(EMGroupLeaveReason)reason error:(EMError *)error
+{
+    NSString *tmpStr = group.groupSubject;
+    NSString *str;
+    if (!tmpStr || tmpStr.length == 0) {
+        NSArray *groupArray = [[EaseMob sharedInstance].chatManager groupList];
+        for (EMGroup *obj in groupArray) {
+            if ([obj.groupId isEqualToString:group.groupId]) {
+                tmpStr = obj.groupSubject;
+                break;
+            }
+        }
+    }
+    
+    if (reason == eGroupLeaveReason_BeRemoved) {
+        str = [NSString stringWithFormat:@"你被从群组\'%@\'中踢出", tmpStr];
+    }
+    if (str.length > 0) {
+        TTAlertNoTitle(str);
+    }
+}
+
+#pragma mark - push
+
+- (void)didBindDeviceWithError:(EMError *)error
+{
+    if (error) {
+        TTAlertNoTitle(@"消息推送与设备绑定失败");
+    }
+}
 
 @end

@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainViewController.h"
 
-@interface G4AppDelegate : UIResponder <UIApplicationDelegate>
+@interface G4AppDelegate : UIResponder <UIApplicationDelegate,IChatManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) MainViewController *mainController;
+
 +(id)shareAppDelegate;
 
 -(void)showLogin;

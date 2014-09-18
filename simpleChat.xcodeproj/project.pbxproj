@@ -2802,10 +2802,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/simpleChat/AMap_iOS_API_Lib_V2.2.1/2D",
-					"$(PROJECT_DIR)/simpleChat/AMap_iOS_API_Lib_V2.2.1/3D",
-					"$(PROJECT_DIR)/simpleChat/AMap_iOS_API_Lib_V2.2.1/Search",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/AMap_iOS_API_Lib_V2.2.1/2D",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/AMap_iOS_API_Lib_V2.2.1/3D",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/AMap_iOS_API_Lib_V2.2.1/Search",
@@ -2817,14 +2813,6 @@
 				INFOPLIST_FILE = "simpleChat/simpleChat-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/simpleChat/EaseMobSDK/lib",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_4.1",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/Sina",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/UMSocial_ScreenShot_Sdk",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/UMSocial_Shake_Sdk",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/Wechat",
-					"$(PROJECT_DIR)/simpleChat/UMAnalytics_Sdk_3.1.2",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/EaseMobSDK/lib",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/UMeng/UMAnalytics_Sdk_3.1.2",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/UMeng/UMSocial_Sdk_4.1",
@@ -2851,10 +2839,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/simpleChat/AMap_iOS_API_Lib_V2.2.1/2D",
-					"$(PROJECT_DIR)/simpleChat/AMap_iOS_API_Lib_V2.2.1/3D",
-					"$(PROJECT_DIR)/simpleChat/AMap_iOS_API_Lib_V2.2.1/Search",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/AMap_iOS_API_Lib_V2.2.1/2D",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/AMap_iOS_API_Lib_V2.2.1/3D",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/AMap_iOS_API_Lib_V2.2.1/Search",
@@ -2866,14 +2850,6 @@
 				INFOPLIST_FILE = "simpleChat/simpleChat-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/simpleChat/EaseMobSDK/lib",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_4.1",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/Sina",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/UMSocial_ScreenShot_Sdk",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/UMSocial_Shake_Sdk",
-					"$(PROJECT_DIR)/simpleChat/UMSocial_Sdk_Extra_Frameworks/Wechat",
-					"$(PROJECT_DIR)/simpleChat/UMAnalytics_Sdk_3.1.2",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/EaseMobSDK/lib",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/UMeng/UMAnalytics_Sdk_3.1.2",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/UMeng/UMSocial_Sdk_4.1",
