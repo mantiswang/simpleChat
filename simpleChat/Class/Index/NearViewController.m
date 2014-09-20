@@ -45,7 +45,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    self.mapView.showsUserLocation = YES;    //YES 为打开定位，NO为关闭定位
+    self.mapView.showsUserLocation = YES;    //YES 为打开定位，NO为关闭定位
     
     [self.mapView setUserTrackingMode: MAUserTrackingModeFollow animated:YES];//地图跟着位置移动
 }
@@ -78,8 +78,8 @@
 #pragma mark - MAMapViewDelegate
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
-//    if ([annotation isKindOfClass:[MAPointAnnotation class]])
-//    {
+    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    {
         static NSString *customReuseIndetifier = @"customReuseIndetifier";
         
         CustomAnnotationView *annotationView = (CustomAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
@@ -97,9 +97,9 @@
 //        annotationView.name     = @"河马";
         
         return annotationView;
-//    }
-//    
-//    return nil;
+    }
+    
+    return nil;
 }
 
 #pragma mark - Action Handle
