@@ -1,4 +1,25 @@
 PODS:
+  - AFNetworking (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - CocoaSecurity (1.2.4)
   - DACircularProgress (2.2.0)
   - MBProgressHUD (0.9)
@@ -16,6 +37,7 @@ PODS:
   - THProgressView (1.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 2.0)
   - MBProgressHUD (~> 0.8)
   - MWPhotoBrowser
   - NSUserDefaults-AESEncryptor
@@ -23,6 +45,7 @@ DEPENDENCIES:
   - THProgressView (~> 1.0)
 
 SPEC CHECKSUMS:
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   CocoaSecurity: 7ce1b967863d4e96dcffdbad17671117900e6c6e
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8

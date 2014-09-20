@@ -12,11 +12,11 @@
 
 #import "UMSocialSnsPlatformManager.h"
 
+#import "LocationUtil.h"
+
 @interface G4ViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *UserName;
-@property (weak, nonatomic) IBOutlet UITextField *PassWord;
-@property (weak, nonatomic) IBOutlet UIButton *registerBtn;
-@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+
+@property (nonatomic, strong)        CLLocation  *location;
 
 @end
 
@@ -26,6 +26,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange:) name:KNOTIFICATION_LOCATIONCHANGE object:nil];
+    
+    [[LocationUtil sharedLocationUtil] startLocationUpdates];
+}
+
+-(void)locationChange:(NSNotification*) notification
+{
+    _location = nil;
+    _location = notification.object;
+    [[LocationUtil sharedLocationUtil] stopLocationUpdates];
+    NSLog(@"location is %f, %f", _location.coordinate.latitude, _location.coordinate.longitude);
 }
 
 - (IBAction)qqLogin:(id)sender {
@@ -77,15 +89,40 @@
 
 -(void)loginEaseMob:(NSString*)username password:(NSString*)password
 {
+    
     [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:username
                                                         password:password
                                                       completion:
      ^(NSDictionary *loginInfo, EMError *error) {
-         if (!error) {
+         if (loginInfo && !error) {
              NSLog(@"登录成功");
              [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
-             
+         }else{
+             NSString *message = nil;
+             switch (error.errorCode) {
+                 case EMErrorServerNotReachable:
+                     message = @"连接服务器失败!";
+                     break;
+                 case EMErrorServerAuthenticationFailure:
+                     message = @"用户名或密码错误";
+                     break;
+                 case EMErrorServerTimeout:
+                     message = @"连接服务器超时!";
+                     break;
+                 default:
+                     message = @"登录失败";
+                     break;
+             }
+
+             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil
+                                                             message:message
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+             [alert show];
          }
+             
+             
      } onQueue:nil];
     
 }
@@ -93,11 +130,12 @@
 //处理注册失败
 -(void)handleRegisterEaseMobError:(EMError*)error uname:(NSString*)username pwd:(NSString*)password
 {
+    NSString *message = nil;
     switch (error.errorCode) {
         case EMErrorServerDuplicatedAccount:              // 注册失败(Ex. 注册时, 如果用户存在, 会返回的error)
         {
             [self loginEaseMob:username password:password];
-            break;
+            return;
         }
         case EMErrorInvalidUsername:                      // 无效的username
         case EMErrorInvalidUsername_NULL:                 // 无效的用户名(用户名为空)
@@ -106,10 +144,25 @@
             
             break;
         }
-            
-        default:
+        case EMErrorServerNotReachable:
+            message = @"连接服务器失败!";
             break;
+
+        case EMErrorServerTimeout:
+            message = @"连接服务器超时!";
+            break;
+        default:
+            message = @"注册失败";
+            break;
+
     }
+    
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)didReceiveMemoryWarning

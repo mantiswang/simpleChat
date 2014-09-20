@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1871F07319CD16EC0041CC93 /* NearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871F07019CD16EC0041CC93 /* NearViewController.m */; };
+		1871F07619CD32060041CC93 /* portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1871F07519CD32060041CC93 /* portrait@2x.png */; };
+		1871F07819CD336F0041CC93 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1871F07719CD336F0041CC93 /* pin.png */; };
+		1871F08019CD61000041CC93 /* GeoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871F07B19CD61000041CC93 /* GeoUtil.m */; };
+		1871F08119CD61000041CC93 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871F07D19CD61000041CC93 /* LocationUtil.m */; };
+		1871F08219CD61000041CC93 /* MKMapViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871F07F19CD61000041CC93 /* MKMapViewUtil.m */; };
+		1871F08619CD65450041CC93 /* G4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871F08519CD65450041CC93 /* G4ViewController.m */; };
 		2740BD0C17BA4035B755E8F9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBF32B409194EB9BDDF6C06 /* libPods.a */; };
-		8951C0F319C48E8600E355EB /* G4BaseMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8951C0E719C48E8600E355EB /* G4BaseMapViewController.m */; };
-		8951C0F419C48E8600E355EB /* G4BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8951C0E919C48E8600E355EB /* G4BaseViewController.m */; };
-		8951C0F519C48E8600E355EB /* G4LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8951C0EB19C48E8600E355EB /* G4LoginViewController.m */; };
-		8951C0F619C48E8600E355EB /* G4MainMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8951C0ED19C48E8600E355EB /* G4MainMapVC.m */; };
 		8951C0F719C48E8600E355EB /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8951C0F019C48E8600E355EB /* CustomAnnotationView.m */; };
 		8951C0F819C48E8600E355EB /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8951C0F219C48E8600E355EB /* CustomCalloutView.m */; };
 		8951C10619C48EB700E355EB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8951C10519C48EB700E355EB /* CoreTelephony.framework */; };
@@ -329,7 +332,6 @@
 		89D0DEBF19C5F0430072F1F0 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3019C5F0430072F1F0 /* MagicalRecord.m */; };
 		89D0DEC019C5F0430072F1F0 /* UIDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3419C5F0430072F1F0 /* UIDemo.xcdatamodeld */; };
 		89D0DEC119C5F0430072F1F0 /* G4AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3719C5F0430072F1F0 /* G4AppDelegate.m */; };
-		89D0DEC219C5F0430072F1F0 /* G4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3919C5F0430072F1F0 /* G4ViewController.m */; };
 		89D0DEC319C5F0430072F1F0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3B19C5F0430072F1F0 /* LoginViewController.m */; };
 		89D0DEC419C5F0430072F1F0 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D0DE3C19C5F0430072F1F0 /* LoginViewController.xib */; };
 		89D0DEC519C5F0430072F1F0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3E19C5F0430072F1F0 /* MainViewController.m */; };
@@ -358,14 +360,18 @@
 
 /* Begin PBXFileReference section */
 		119FBDE4AE714A159F5E2185 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		8951C0E619C48E8600E355EB /* G4BaseMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G4BaseMapViewController.h; sourceTree = "<group>"; };
-		8951C0E719C48E8600E355EB /* G4BaseMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G4BaseMapViewController.m; sourceTree = "<group>"; };
-		8951C0E819C48E8600E355EB /* G4BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G4BaseViewController.h; sourceTree = "<group>"; };
-		8951C0E919C48E8600E355EB /* G4BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G4BaseViewController.m; sourceTree = "<group>"; };
-		8951C0EA19C48E8600E355EB /* G4LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G4LoginViewController.h; sourceTree = "<group>"; };
-		8951C0EB19C48E8600E355EB /* G4LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G4LoginViewController.m; sourceTree = "<group>"; };
-		8951C0EC19C48E8600E355EB /* G4MainMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G4MainMapVC.h; sourceTree = "<group>"; };
-		8951C0ED19C48E8600E355EB /* G4MainMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G4MainMapVC.m; sourceTree = "<group>"; };
+		1871F06F19CD16EC0041CC93 /* NearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearViewController.h; sourceTree = "<group>"; };
+		1871F07019CD16EC0041CC93 /* NearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearViewController.m; sourceTree = "<group>"; };
+		1871F07519CD32060041CC93 /* portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portrait@2x.png"; sourceTree = "<group>"; };
+		1871F07719CD336F0041CC93 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		1871F07A19CD61000041CC93 /* GeoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoUtil.h; sourceTree = "<group>"; };
+		1871F07B19CD61000041CC93 /* GeoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoUtil.m; sourceTree = "<group>"; };
+		1871F07C19CD61000041CC93 /* LocationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtil.h; sourceTree = "<group>"; };
+		1871F07D19CD61000041CC93 /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
+		1871F07E19CD61000041CC93 /* MKMapViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMapViewUtil.h; sourceTree = "<group>"; };
+		1871F07F19CD61000041CC93 /* MKMapViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMapViewUtil.m; sourceTree = "<group>"; };
+		1871F08419CD65450041CC93 /* G4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G4ViewController.h; sourceTree = "<group>"; };
+		1871F08519CD65450041CC93 /* G4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G4ViewController.m; sourceTree = "<group>"; };
 		8951C0EF19C48E8600E355EB /* CustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		8951C0F019C48E8600E355EB /* CustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		8951C0F119C48E8600E355EB /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
@@ -872,8 +878,6 @@
 		89D0DE3519C5F0430072F1F0 /* UIDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UIDemo.xcdatamodel; sourceTree = "<group>"; };
 		89D0DE3619C5F0430072F1F0 /* G4AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G4AppDelegate.h; sourceTree = "<group>"; };
 		89D0DE3719C5F0430072F1F0 /* G4AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G4AppDelegate.m; sourceTree = "<group>"; };
-		89D0DE3819C5F0430072F1F0 /* G4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G4ViewController.h; sourceTree = "<group>"; };
-		89D0DE3919C5F0430072F1F0 /* G4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G4ViewController.m; sourceTree = "<group>"; };
 		89D0DE3A19C5F0430072F1F0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		89D0DE3B19C5F0430072F1F0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		89D0DE3C19C5F0430072F1F0 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -959,19 +963,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8951C0E519C48E8600E355EB /* Controller */ = {
+		1871F06A19CD16EC0041CC93 /* Near */ = {
 			isa = PBXGroup;
 			children = (
-				8951C0E619C48E8600E355EB /* G4BaseMapViewController.h */,
-				8951C0E719C48E8600E355EB /* G4BaseMapViewController.m */,
-				8951C0E819C48E8600E355EB /* G4BaseViewController.h */,
-				8951C0E919C48E8600E355EB /* G4BaseViewController.m */,
-				8951C0EA19C48E8600E355EB /* G4LoginViewController.h */,
-				8951C0EB19C48E8600E355EB /* G4LoginViewController.m */,
-				8951C0EC19C48E8600E355EB /* G4MainMapVC.h */,
-				8951C0ED19C48E8600E355EB /* G4MainMapVC.m */,
+				1871F06F19CD16EC0041CC93 /* NearViewController.h */,
+				1871F07019CD16EC0041CC93 /* NearViewController.m */,
 			);
-			path = Controller;
+			name = Near;
+			path = Index;
+			sourceTree = "<group>";
+		};
+		1871F07419CD32060041CC93 /* Near */ = {
+			isa = PBXGroup;
+			children = (
+				1871F07719CD336F0041CC93 /* pin.png */,
+				1871F07519CD32060041CC93 /* portrait@2x.png */,
+			);
+			path = Near;
+			sourceTree = "<group>";
+		};
+		1871F07919CD61000041CC93 /* Geo */ = {
+			isa = PBXGroup;
+			children = (
+				1871F07A19CD61000041CC93 /* GeoUtil.h */,
+				1871F07B19CD61000041CC93 /* GeoUtil.m */,
+				1871F07C19CD61000041CC93 /* LocationUtil.h */,
+				1871F07D19CD61000041CC93 /* LocationUtil.m */,
+				1871F07E19CD61000041CC93 /* MKMapViewUtil.h */,
+				1871F07F19CD61000041CC93 /* MKMapViewUtil.m */,
+			);
+			path = Geo;
+			sourceTree = "<group>";
+		};
+		1871F08319CD65450041CC93 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1871F08419CD65450041CC93 /* G4ViewController.h */,
+				1871F08519CD65450041CC93 /* G4ViewController.m */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		8951C0EE19C48E8600E355EB /* Models */ = {
@@ -1040,7 +1070,6 @@
 				89D0DD4019C5EE1B0072F1F0 /* Custom */,
 				89D0DB0C19C5EDAD0072F1F0 /* 3rdparty */,
 				89D0DC0119C5EDAD0072F1F0 /* Resources */,
-				8951C0E519C48E8600E355EB /* Controller */,
 				8951C0EE19C48E8600E355EB /* Models */,
 				89FBF94B19B3642C00B78082 /* config */,
 				89CA10A719AF851900E00AA5 /* Login.storyboard */,
@@ -1527,6 +1556,7 @@
 		89D0DC0119C5EDAD0072F1F0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1871F07419CD32060041CC93 /* Near */,
 				89D0DC0219C5EDAD0072F1F0 /* appicon */,
 				89D0DC0919C5EDAD0072F1F0 /* chatListCell */,
 				89D0DC0C19C5EDAD0072F1F0 /* ChatView */,
@@ -1743,6 +1773,7 @@
 		89D0DD4019C5EE1B0072F1F0 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				1871F07919CD61000041CC93 /* Geo */,
 				89D0DD4119C5EE1B0072F1F0 /* BaseTableViewCell.h */,
 				89D0DD4219C5EE1B0072F1F0 /* BaseTableViewCell.m */,
 				89D0DD4319C5EE1B0072F1F0 /* EMSearchBar.h */,
@@ -1784,6 +1815,8 @@
 		89D0DD5F19C5F0420072F1F0 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				1871F08319CD65450041CC93 /* Login */,
+				1871F06A19CD16EC0041CC93 /* Near */,
 				89D0DD6019C5F0420072F1F0 /* back@2x.png */,
 				89D0DD6119C5F0420072F1F0 /* Chat */,
 				89D0DDCC19C5F0420072F1F0 /* ChatGroup */,
@@ -1791,8 +1824,6 @@
 				89D0DDF419C5F0420072F1F0 /* Core Data */,
 				89D0DE3619C5F0430072F1F0 /* G4AppDelegate.h */,
 				89D0DE3719C5F0430072F1F0 /* G4AppDelegate.m */,
-				89D0DE3819C5F0430072F1F0 /* G4ViewController.h */,
-				89D0DE3919C5F0430072F1F0 /* G4ViewController.m */,
 				89D0DE3A19C5F0430072F1F0 /* LoginViewController.h */,
 				89D0DE3B19C5F0430072F1F0 /* LoginViewController.m */,
 				89D0DE3C19C5F0430072F1F0 /* LoginViewController.xib */,
@@ -2346,6 +2377,7 @@
 				89D0DD2619C5EDAE0072F1F0 /* chat_sender_audio_playing_full.png in Resources */,
 				89D0DD2319C5EDAE0072F1F0 /* chat_sender_audio_playing_002@2x.png in Resources */,
 				89D0DCD419C5EDAE0072F1F0 /* chatFire_audioPlaying2@2x.png in Resources */,
+				1871F07819CD336F0041CC93 /* pin.png in Resources */,
 				89D0DCD719C5EDAE0072F1F0 /* VoiceSearchFeedback001.png in Resources */,
 				89D0DD3A19C5EDAE0072F1F0 /* tabbar_settingHL.png in Resources */,
 				89D0DE7F19C5F0430072F1F0 /* messageToolbarBg@2x.png in Resources */,
@@ -2399,6 +2431,7 @@
 				89D0DD0B19C5EDAE0072F1F0 /* chat_location_annotation_someone@2x.png in Resources */,
 				89D0DCC719C5EDAE0072F1F0 /* 114.png in Resources */,
 				89D0DCC819C5EDAE0072F1F0 /* 120.png in Resources */,
+				1871F07619CD32060041CC93 /* portrait@2x.png in Resources */,
 				89D0DCB219C5EDAE0072F1F0 /* UMSCommentDetailController.xib in Resources */,
 				89D0DD3D19C5EDAE0072F1F0 /* tabbarBackground@2x.png in Resources */,
 				89D0DD3C19C5EDAE0072F1F0 /* tabbarBackground.png in Resources */,
@@ -2573,6 +2606,7 @@
 				89CA10A219AF851900E00AA5 /* main.m in Sources */,
 				8951C0F719C48E8600E355EB /* CustomAnnotationView.m in Sources */,
 				89D0DED819C5F0E00072F1F0 /* NSDateFormatter+Category.m in Sources */,
+				1871F08619CD65450041CC93 /* G4ViewController.m in Sources */,
 				89D0DD5819C5EE1B0072F1F0 /* EMRemarkImageView.m in Sources */,
 				8951C0F819C48E8600E355EB /* CustomCalloutView.m in Sources */,
 				89D0DE8F19C5F0430072F1F0 /* ContactSelectionViewController.m in Sources */,
@@ -2586,15 +2620,16 @@
 				89D0DD5A19C5EE1B0072F1F0 /* EMChooseViewController.m in Sources */,
 				89D0DE4A19C5F0430072F1F0 /* ChatListViewController.m in Sources */,
 				89D0DEC319C5F0430072F1F0 /* LoginViewController.m in Sources */,
+				1871F08219CD61000041CC93 /* MKMapViewUtil.m in Sources */,
 				89D0DEC919C5F0430072F1F0 /* SettingsViewController.m in Sources */,
 				89D0DE4C19C5F0430072F1F0 /* ChatViewController.m in Sources */,
 				89D0DD5719C5EE1B0072F1F0 /* EMTextView.m in Sources */,
-				8951C0F619C48E8600E355EB /* G4MainMapVC.m in Sources */,
 				89D0DE8219C5F0430072F1F0 /* EMChatImageBubbleView.m in Sources */,
 				89D0DE9D19C5F0430072F1F0 /* ContactsViewController.m in Sources */,
 				89D0DEA619C5F0430072F1F0 /* MagicalImportFunctions.m in Sources */,
 				89D0DE9F19C5F0430072F1F0 /* AddFriendCell.m in Sources */,
 				89D0DEA119C5F0430072F1F0 /* ApplyFriendCell.m in Sources */,
+				1871F08119CD61000041CC93 /* LocationUtil.m in Sources */,
 				89D0DE9019C5F0430072F1F0 /* CreateGroupViewController.m in Sources */,
 				89D0DE5619C5F0430072F1F0 /* DXRecordView.m in Sources */,
 				89D0DE8819C5F0430072F1F0 /* EMChatViewBaseCell.m in Sources */,
@@ -2607,7 +2642,6 @@
 				89D0DEC119C5F0430072F1F0 /* G4AppDelegate.m in Sources */,
 				89D0DEA919C5F0430072F1F0 /* NSNumber+MagicalDataImport.m in Sources */,
 				89D0DEDB19C5F0E00072F1F0 /* UIViewController+DismissKeyboard.m in Sources */,
-				8951C0F519C48E8600E355EB /* G4LoginViewController.m in Sources */,
 				89D0DEA519C5F0430072F1F0 /* ApplyEntity.m in Sources */,
 				89D0DCC619C5EDAE0072F1F0 /* WCAlertView.m in Sources */,
 				89D0DE9819C5F0430072F1F0 /* GroupSettingViewController.m in Sources */,
@@ -2626,19 +2660,18 @@
 				89D0DE9B19C5F0430072F1F0 /* PublicGroupListViewController.m in Sources */,
 				89D0DEC619C5F0430072F1F0 /* BlackListViewController.m in Sources */,
 				89D0DE4F19C5F0430072F1F0 /* LocationViewController.m in Sources */,
+				1871F08019CD61000041CC93 /* GeoUtil.m in Sources */,
 				89D0DEB619C5F0430072F1F0 /* NSManagedObjectModel+MagicalRecord.m in Sources */,
 				89D0DEBC19C5F0430072F1F0 /* MagicalRecord+Options.m in Sources */,
 				89D0DE4B19C5F0430072F1F0 /* ChatSendHelper.m in Sources */,
 				89D0DED719C5F0E00072F1F0 /* NSDate+Category.m in Sources */,
 				89D0DE8919C5F0430072F1F0 /* EMChatViewCell.m in Sources */,
 				89D0DEC819C5F0430072F1F0 /* PushNotificationViewController.m in Sources */,
-				89D0DEC219C5F0430072F1F0 /* G4ViewController.m in Sources */,
 				89D0DE8C19C5F0430072F1F0 /* MessageModelManager.m in Sources */,
 				89D0DE8719C5F0430072F1F0 /* EMChatTimeCell.m in Sources */,
 				89D0DE8E19C5F0430072F1F0 /* ChatGroupDetailViewController.m in Sources */,
 				89D0DEDC19C5F0E00072F1F0 /* UIViewController+HUD.m in Sources */,
 				89D0DE8B19C5F0430072F1F0 /* MessageModel.m in Sources */,
-				8951C0F319C48E8600E355EB /* G4BaseMapViewController.m in Sources */,
 				89D0DEAD19C5F0430072F1F0 /* NSManagedObject+MagicalAggregation.m in Sources */,
 				89D0DEC719C5F0430072F1F0 /* DebugViewController.m in Sources */,
 				89D0DEBF19C5F0430072F1F0 /* MagicalRecord.m in Sources */,
@@ -2648,7 +2681,6 @@
 				89D0DEB219C5F0430072F1F0 /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				89D0DCAB19C5EDAD0072F1F0 /* SRSlimeView.m in Sources */,
 				89D0DE5019C5F0430072F1F0 /* DXMessageToolBar.m in Sources */,
-				8951C0F419C48E8600E355EB /* G4BaseViewController.m in Sources */,
 				89D0DEA419C5F0430072F1F0 /* RealtimeSearchUtil.m in Sources */,
 				89D0DEA219C5F0430072F1F0 /* ApplyViewController.m in Sources */,
 				89D0DE5419C5F0430072F1F0 /* FacialView.m in Sources */,
@@ -2659,6 +2691,7 @@
 				89D0DEB419C5F0430072F1F0 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				89D0DC8D19C5EDAD0072F1F0 /* EmojiEmoticons.m in Sources */,
 				89D0DE8D19C5F0430072F1F0 /* MessageReadManager.m in Sources */,
+				1871F07319CD16EC0041CC93 /* NearViewController.m in Sources */,
 				89D0DEA019C5F0430072F1F0 /* AddFriendViewController.m in Sources */,
 				89D0DEAF19C5F0430072F1F0 /* NSManagedObject+MagicalFinders.m in Sources */,
 				89D0DD5619C5EE1B0072F1F0 /* EMSearchBar.m in Sources */,
@@ -2823,6 +2856,7 @@
 					"$(PROJECT_DIR)/simpleChat/3rdparty/UMeng/UMSocial_Sdk_Extra_Frameworks/UMSocial_Shake_Sdk",
 					"$(PROJECT_DIR)/simpleChat/3rdparty/UMeng/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "B0946F1F-E887-40A8-9AAC-95F7043B4D11";

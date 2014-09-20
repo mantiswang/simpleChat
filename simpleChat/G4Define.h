@@ -13,7 +13,8 @@
 
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 
-#define KNOTIFICATION_LOGINCHANGE @"loginStateChange"
+#define KNOTIFICATION_LOGINCHANGE               @"loginStateChange"
+#define KNOTIFICATION_LOCATIONCHANGE            @"locationChagne"
 
 #define CHATVIEWBACKGROUNDCOLOR [UIColor colorWithRed:0.936 green:0.932 blue:0.907 alpha:1]
 

@@ -123,11 +123,20 @@
 
 -(void)loginStateChange:(NSNotification *)notification
 {
+    UINavigationController* nav = nil;
     BOOL loginSuccess = [notification.object boolValue];
     if(loginSuccess)
     {
-        MainViewController* _mainController = [[MainViewController alloc] init];
-        UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:_mainController];
+        if(_mainController == nil)
+        {
+            _mainController = [[MainViewController alloc] init];
+            nav = [[UINavigationController alloc] initWithRootViewController:_mainController];
+        }
+        else
+        {
+            nav = _mainController.navigationController;
+        }
+        
         self.window.rootViewController = nav;
         
         [nav setNavigationBarHidden:YES];

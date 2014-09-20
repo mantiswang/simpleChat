@@ -15,6 +15,7 @@
 #import "ContactsViewController.h"
 #import "SettingsViewController.h"
 #import "ApplyViewController.h"
+#import "NearViewController.h"
 
 //两次提示的默认间隔
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
@@ -24,6 +25,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     ChatListViewController *_chatListVC;
     ContactsViewController *_contactsVC;
     SettingsViewController *_settingsVC;
+    NearViewController     *_nearVC;
     
     UIBarButtonItem *_addFriendItem;
 }
@@ -50,7 +52,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     if ([UIDevice currentDevice].systemVersion.floatValue >= 7) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-    self.title = @"会话";
+    self.title = @"附近的人";
     
     //获取未读消息数，此时并没有把self注册为SDK的delegate，读取出的未读数是上次退出程序时的
     [self didUnreadMessagesCountChanged];
@@ -91,6 +93,9 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
         self.title = @"通讯录";
         self.navigationItem.rightBarButtonItem = _addFriendItem;
     }else if (item.tag == 2){
+        self.title = @"附近的人";
+        self.navigationItem.rightBarButtonItem = nil;
+    }else if (item.tag == 3){
         self.title = @"设置";
         self.navigationItem.rightBarButtonItem = nil;
         [_settingsVC refreshConfig];
@@ -134,6 +139,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     self.tabBar.backgroundImage = [[UIImage imageNamed:@"tabbarBackground"] stretchableImageWithLeftCapWidth:25 topCapHeight:25];
     self.tabBar.selectionIndicatorImage = [[UIImage imageNamed:@"tabbarSelectBg"] stretchableImageWithLeftCapWidth:25 topCapHeight:25];
     
+    
     _chatListVC = [[ChatListViewController alloc] init];
     _chatListVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"会话"
                                                            image:nil
@@ -152,10 +158,20 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     [self unSelectedTapTabBarItems:_contactsVC.tabBarItem];
     [self selectedTapTabBarItems:_contactsVC.tabBarItem];
     
+    _nearVC = [[NearViewController alloc] init];
+    _nearVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"附近的人"
+                                                       image:nil
+                                                         tag:2];
+    [_nearVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"tabbar_chatsHL"]];
+    [_nearVC.tabBarItem setImage:[UIImage imageNamed:@"tabbar_chats"]];
+    [self unSelectedTapTabBarItems:_nearVC.tabBarItem];
+    [self selectedTapTabBarItems:_nearVC.tabBarItem];
+    
+    
     _settingsVC = [[SettingsViewController alloc] init];
     _settingsVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"设置"
                                                            image:nil
-                                                             tag:2];
+                                                             tag:3];
     [_settingsVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"tabbar_settingHL"]];
     [_settingsVC.tabBarItem setImage:[UIImage imageNamed:@"tabbar_setting"]];
 
@@ -163,7 +179,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     [self unSelectedTapTabBarItems:_settingsVC.tabBarItem];
     [self selectedTapTabBarItems:_settingsVC.tabBarItem];
     
-    self.viewControllers = @[_chatListVC, _contactsVC, _settingsVC];
+    self.viewControllers = @[_chatListVC, _contactsVC, _nearVC, _settingsVC];
     [self selectedTapTabBarItems:_chatListVC.tabBarItem];
 }
 

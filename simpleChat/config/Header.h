@@ -24,4 +24,7 @@
 
 #import "NSUserDefaults+AESEncryptor.h"
 
+
+#import "AFNetworking.h"
+
 #endif

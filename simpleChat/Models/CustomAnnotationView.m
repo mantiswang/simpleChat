@@ -10,15 +10,14 @@
 #import "CustomCalloutView.h"
 #import "G4AppDelegate.h"
 
-
-#define kAnnotationWidth  60.f
-#define kAnnotationHeight 90.f
-
-#define kPortraitWidth    50.f
-#define kPortraitHeight   50.f
+#define kWidth  60.f
+#define kHeight 70.f
 
 #define kHoriMargin 5.f
 #define kVertMargin 5.f
+
+#define kPortraitWidth  50.f
+#define kPortraitHeight 50.f
 
 #define kCalloutWidth   200.0
 #define kCalloutHeight  70.0
@@ -26,28 +25,45 @@
 @interface CustomAnnotationView ()
 
 @property (nonatomic, strong) UIImageView *portraitImageView;
+@property (nonatomic, strong) UILabel *nameLabel;
 
 @end
 
-
 @implementation CustomAnnotationView
+
 @synthesize calloutView;
 @synthesize portraitImageView   = _portraitImageView;
+@synthesize nameLabel           = _nameLabel;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
+#pragma mark - Handle Action
 
 - (void)btnAction
 {
     CLLocationCoordinate2D coorinate = [self.annotation coordinate];
     
     NSLog(@"coordinate = {%f, %f}", coorinate.latitude, coorinate.longitude);
+}
+
+#pragma mark - Override
+
+- (NSString *)name
+{
+    return self.nameLabel.text;
+}
+
+- (void)setName:(NSString *)name
+{
+    self.nameLabel.text = name;
+}
+
+- (UIImage *)portrait
+{
+    return self.portraitImageView.image;
+}
+
+- (void)setPortrait:(UIImage *)portrait
+{
+    self.portraitImageView.image = portrait;
 }
 
 - (void)setSelected:(BOOL)selected
@@ -88,8 +104,6 @@
         }
         
         [self addSubview:self.calloutView];
-        
-        [[G4AppDelegate shareAppDelegate] showLogin];
     }
     else
     {
@@ -122,7 +136,7 @@
     
     if (self)
     {
-        self.bounds = CGRectMake(0.f, 0.f, kAnnotationWidth, kAnnotationHeight);
+        self.bounds = CGRectMake(0.f, 0.f, kWidth, kHeight);
         
         self.backgroundColor = [UIColor grayColor];
         
@@ -130,19 +144,19 @@
         self.portraitImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kHoriMargin, kVertMargin, kPortraitWidth, kPortraitHeight)];
         [self addSubview:self.portraitImageView];
         
+        /* Create name label. */
+        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPortraitWidth + kHoriMargin,
+                                                                   kVertMargin,
+                                                                   kWidth - kPortraitWidth - kHoriMargin,
+                                                                   kHeight - 2 * kVertMargin)];
+        self.nameLabel.backgroundColor  = [UIColor clearColor];
+        self.nameLabel.textAlignment    = NSTextAlignmentCenter;
+        self.nameLabel.textColor        = [UIColor whiteColor];
+        self.nameLabel.font             = [UIFont systemFontOfSize:15.f];
+        [self addSubview:self.nameLabel];
     }
     
     return self;
 }
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
