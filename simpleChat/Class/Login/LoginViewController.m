@@ -1,46 +1,54 @@
 //
-//  G4ViewController.m
+//  LoginViewController.m
 //  simpleChat
 //
 //  Created by wangyue on 14-8-28.
 //  Copyright (c) 2014年 wangyue. All rights reserved.
 //
 
-#import "G4ViewController.h"
+#import "LoginViewController.h"
 
 #import "EaseMob.h"
 
 #import "UMSocialSnsPlatformManager.h"
 
-#import "LocationUtil.h"
 
-@interface G4ViewController ()
+@interface LoginViewController ()
 
-@property (nonatomic, strong)        CLLocation  *location;
 
 @end
 
-@implementation G4ViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self setupViews];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange:) name:KNOTIFICATION_LOCATIONCHANGE object:nil];
-    
-    [[LocationUtil sharedLocationUtil] startLocationUpdates];
 }
 
--(void)locationChange:(NSNotification*) notification
+-(void)setupViews
 {
-    _location = nil;
-    _location = notification.object;
-    [[LocationUtil sharedLocationUtil] stopLocationUpdates];
-    NSLog(@"location is %f, %f", _location.coordinate.latitude, _location.coordinate.longitude);
+    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:self.view.frame];
+    bgImgView.image = [UIImage imageNamed:@"LoginBg"];
+    [self.view addSubview:bgImgView];
+    
+    UIButton* sinaBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    sinaBtn.frame = CGRectMake(SCREEN_WIDTH / 2 - 58 - 30, SCREEN_HEIGHT * 0.618, 58, 58);
+    [sinaBtn setImage:[UIImage imageNamed:@"SinaLogo"] forState:UIControlStateNormal];
+    [sinaBtn addTarget:self action:@selector(sinaLogin) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:sinaBtn];
+    
+    UIButton* qqBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    qqBtn.frame = CGRectMake(SCREEN_WIDTH / 2 + 30, SCREEN_HEIGHT * 0.618, 58, 58);
+    [qqBtn setImage:[UIImage imageNamed:@"QQLogo"] forState:UIControlStateNormal];
+    [qqBtn addTarget:self action:@selector(qqLogin) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:qqBtn];
+    
 }
 
-- (IBAction)qqLogin:(id)sender {
+- (void)qqLogin {
     
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
     snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
@@ -48,7 +56,7 @@
     });
 }
 
-- (IBAction)sinaLogin:(id)sender {
+- (void)sinaLogin {
     
     __unsafe_unretained typeof (self) this = self;
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
@@ -64,9 +72,6 @@
         }
     });
 }
-
-
-
 
 
 -(void)registerEaseMobWithUname:(NSString*)uName PWD:(NSString*) pwd
@@ -96,6 +101,8 @@
      ^(NSDictionary *loginInfo, EMError *error) {
          if (loginInfo && !error) {
              NSLog(@"登录成功");
+             [[NSUserDefaults standardUserDefaults] encryptValue:username withKey:kUsername];
+             [[NSUserDefaults standardUserDefaults] encryptValue:password withKey:kPassword];
              [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
          }else{
              NSString *message = nil;

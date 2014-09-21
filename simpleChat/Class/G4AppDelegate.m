@@ -26,9 +26,11 @@
 
 #import "APIKey.h"
 
-
+#import "LoginViewController.h"
 #import "MainViewController.h"
 #import "ApplyViewController.h"
+
+#import "LocationUtil.h"
 
 
 @implementation G4AppDelegate
@@ -38,7 +40,7 @@
     static G4AppDelegate *_shareG4AppDelegate = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _shareG4AppDelegate = [UIApplication sharedApplication].delegate;
+        _shareG4AppDelegate = (G4AppDelegate*)[UIApplication sharedApplication].delegate;
     });
     
     return _shareG4AppDelegate;
@@ -53,6 +55,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.backgroundColor = [UIColor whiteColor];
     
+    [self getCurrentLocation];
     [self registerNotification];
     //设置AESKey
     [[NSUserDefaults standardUserDefaults] setAESKey:(NSString*)AESKeyString];
@@ -136,16 +139,24 @@
         {
             nav = _mainController.navigationController;
         }
-        
-        self.window.rootViewController = nav;
-        
         [nav setNavigationBarHidden:YES];
         [nav setNavigationBarHidden:NO];
     }
     else
     {
+        _mainController = nil;
         
+        [[NSUserDefaults standardUserDefaults] encryptValue:@"" withKey:kUsername];
+        [[NSUserDefaults standardUserDefaults] encryptValue:@"" withKey:kPassword];
+        
+        LoginViewController *loginController = [[LoginViewController alloc] init];
+        nav = [[UINavigationController alloc] initWithRootViewController:loginController];
+        loginController.title = @"环信Demo";
+        [nav setNavigationBarHidden:YES];
     }
+    
+    self.window.rootViewController = nav;
+    
 }
 
 -(void)easeMobConfig:(UIApplication*)application launchOptions:(NSDictionary *)launchOptions
@@ -224,19 +235,38 @@
 }
 
 
+-(void)getCurrentLocation
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange:) name:KNOTIFICATION_LOCATIONCHANGE object:nil];
+    [[LocationUtil sharedLocationUtil] startLocationUpdates];
+}
+
+-(void)locationChange:(NSNotification*) notification
+{
+    _location = nil;
+    _location = notification.object;
+    [[LocationUtil sharedLocationUtil] stopLocationUpdates];
+    NSLog(@"location is %f, %f", _location.coordinate.latitude, _location.coordinate.longitude);
+    
+    //FIXME: 记录用户位置
+    
+    
+    
+}
+
 -(void)checkLogin
 {
-    NSString* uname = [[NSUserDefaults standardUserDefaults] decryptedValueForKey:kSDKUsername];
-    NSString* pwd = [[NSUserDefaults standardUserDefaults] decryptedValueForKey:kSDKPassword];
+    NSString* uname = [[NSUserDefaults standardUserDefaults] decryptedValueForKey:kUsername];
+    NSString* pwd = [[NSUserDefaults standardUserDefaults] decryptedValueForKey:kPassword];
 
-    if(uname != nil && pwd != nil)//登录
+    if(uname != nil && pwd != nil && uname.length > 0 && pwd.length > 0)//登录
     {
         [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uname
                                                             password:pwd
                                                           completion:
          ^(NSDictionary *loginInfo, EMError *error) {
              if (!error) {
-                 MainViewController* _mainController = [[MainViewController alloc] init];
+                 _mainController = [[MainViewController alloc] init];
                  UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:_mainController];
                  self.window.rootViewController = nav;
                  
@@ -258,7 +288,15 @@
 
 -(void)showLogin
 {
-    self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateInitialViewController];
+//    self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateInitialViewController];
+    LoginViewController* loginVC = [[LoginViewController alloc] init];
+//    _mainController = [[MainViewController alloc] init];
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+    self.window.rootViewController = nav;
+    
+    [nav setNavigationBarHidden:YES];
+//    [nav setNavigationBarHidden:NO];
+    
 }
 
 

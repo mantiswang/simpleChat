@@ -62,6 +62,9 @@
 {
     /* Add a annotation on map center. */
     [self addAnnotationWithCooordinate:self.mapView.centerCoordinate];
+#ifdef DEBUG
+    NSLog(@"centCoordinate %f, %f", self.mapView.centerCoordinate.longitude, self.mapView.centerCoordinate.latitude);
+#endif
 }
 
 #pragma mark - Utility
@@ -78,6 +81,9 @@
 #pragma mark - MAMapViewDelegate
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
+#ifdef DEBUG
+    NSLog(@"%@", [annotation class]);
+#endif
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
     {
         static NSString *customReuseIndetifier = @"customReuseIndetifier";
@@ -94,10 +100,16 @@
         }
         
         annotationView.portrait = [UIImage imageNamed:@"portrait"];
-//        annotationView.name     = @"河马";
+
+        //        annotationView.name     = @"河马";
         
         return annotationView;
     }
+    else if([annotation isKindOfClass:[MAUserLocation class]])
+    {
+        
+    }
+        
     
     return nil;
 }

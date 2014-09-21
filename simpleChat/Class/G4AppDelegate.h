@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) MainViewController *mainController;
+@property (nonatomic, strong)        CLLocation  *location;
 
 +(id)shareAppDelegate;
 

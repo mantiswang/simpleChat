@@ -43,7 +43,11 @@
 		self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
 		self.locationManager.activityType = CLActivityTypeAutomotiveNavigation;
 		self.locationManager.delegate = self;
-        [self.locationManager requestAlwaysAuthorization];
+        
+        if([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+        {
+            [self.locationManager requestAlwaysAuthorization];
+        }
         
 		[self.locationManager startUpdatingLocation];
 	}
@@ -64,7 +68,7 @@
 	if (location.horizontalAccuracy >= 0)
     {
 		self.lastCurrentLocation = location;
-        [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOCATIONCHANGE object:self.lastCurrentLocation];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOCATIONCHANGE object:self.lastCurrentLocation];
     }
     
 }

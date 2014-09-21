@@ -1,5 +1,5 @@
 //
-//  G4ViewController.h
+//  LoginViewController.h
 //  simpleChat
 //
 //  Created by wangyue on 14-8-28.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface G4ViewController : UIViewController
+@interface LoginViewController : BaseViewController
 
 @end

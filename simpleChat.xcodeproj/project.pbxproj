@@ -13,7 +13,7 @@
 		1871F08019CD61000041CC93 /* GeoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871F07B19CD61000041CC93 /* GeoUtil.m */; };
 		1871F08119CD61000041CC93 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871F07D19CD61000041CC93 /* LocationUtil.m */; };
 		1871F08219CD61000041CC93 /* MKMapViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871F07F19CD61000041CC93 /* MKMapViewUtil.m */; };
-		1871F08619CD65450041CC93 /* G4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871F08519CD65450041CC93 /* G4ViewController.m */; };
+		1871F08619CD65450041CC93 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871F08519CD65450041CC93 /* LoginViewController.m */; };
 		2740BD0C17BA4035B755E8F9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBF32B409194EB9BDDF6C06 /* libPods.a */; };
 		8951C0F719C48E8600E355EB /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8951C0F019C48E8600E355EB /* CustomAnnotationView.m */; };
 		8951C0F819C48E8600E355EB /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8951C0F219C48E8600E355EB /* CustomCalloutView.m */; };
@@ -28,7 +28,6 @@
 		89CA109A19AF851900E00AA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CA109919AF851900E00AA5 /* UIKit.framework */; };
 		89CA10A019AF851900E00AA5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89CA109E19AF851900E00AA5 /* InfoPlist.strings */; };
 		89CA10A219AF851900E00AA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA10A119AF851900E00AA5 /* main.m */; };
-		89CA10A919AF851900E00AA5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89CA10A719AF851900E00AA5 /* Login.storyboard */; };
 		89CA10AE19AF851900E00AA5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89CA10AD19AF851900E00AA5 /* Images.xcassets */; };
 		89CA10B519AF851900E00AA5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CA10B419AF851900E00AA5 /* XCTest.framework */; };
 		89CA10B619AF851900E00AA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CA109519AF851900E00AA5 /* Foundation.framework */; };
@@ -332,8 +331,6 @@
 		89D0DEBF19C5F0430072F1F0 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3019C5F0430072F1F0 /* MagicalRecord.m */; };
 		89D0DEC019C5F0430072F1F0 /* UIDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3419C5F0430072F1F0 /* UIDemo.xcdatamodeld */; };
 		89D0DEC119C5F0430072F1F0 /* G4AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3719C5F0430072F1F0 /* G4AppDelegate.m */; };
-		89D0DEC319C5F0430072F1F0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3B19C5F0430072F1F0 /* LoginViewController.m */; };
-		89D0DEC419C5F0430072F1F0 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D0DE3C19C5F0430072F1F0 /* LoginViewController.xib */; };
 		89D0DEC519C5F0430072F1F0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE3E19C5F0430072F1F0 /* MainViewController.m */; };
 		89D0DEC619C5F0430072F1F0 /* BlackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE4119C5F0430072F1F0 /* BlackListViewController.m */; };
 		89D0DEC719C5F0430072F1F0 /* DebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DE4319C5F0430072F1F0 /* DebugViewController.m */; };
@@ -370,8 +367,8 @@
 		1871F07D19CD61000041CC93 /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
 		1871F07E19CD61000041CC93 /* MKMapViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMapViewUtil.h; sourceTree = "<group>"; };
 		1871F07F19CD61000041CC93 /* MKMapViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMapViewUtil.m; sourceTree = "<group>"; };
-		1871F08419CD65450041CC93 /* G4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G4ViewController.h; sourceTree = "<group>"; };
-		1871F08519CD65450041CC93 /* G4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G4ViewController.m; sourceTree = "<group>"; };
+		1871F08419CD65450041CC93 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		1871F08519CD65450041CC93 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8951C0EF19C48E8600E355EB /* CustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		8951C0F019C48E8600E355EB /* CustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		8951C0F119C48E8600E355EB /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
@@ -392,7 +389,6 @@
 		89CA109F19AF851900E00AA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89CA10A119AF851900E00AA5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		89CA10A319AF851900E00AA5 /* simpleChat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "simpleChat-Prefix.pch"; sourceTree = "<group>"; };
-		89CA10A819AF851900E00AA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		89CA10AD19AF851900E00AA5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		89CA10B319AF851900E00AA5 /* simpleChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = simpleChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89CA10B419AF851900E00AA5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -878,9 +874,6 @@
 		89D0DE3519C5F0430072F1F0 /* UIDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UIDemo.xcdatamodel; sourceTree = "<group>"; };
 		89D0DE3619C5F0430072F1F0 /* G4AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G4AppDelegate.h; sourceTree = "<group>"; };
 		89D0DE3719C5F0430072F1F0 /* G4AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G4AppDelegate.m; sourceTree = "<group>"; };
-		89D0DE3A19C5F0430072F1F0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		89D0DE3B19C5F0430072F1F0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		89D0DE3C19C5F0430072F1F0 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		89D0DE3D19C5F0430072F1F0 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		89D0DE3E19C5F0430072F1F0 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		89D0DE4019C5F0430072F1F0 /* BlackListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackListViewController.h; sourceTree = "<group>"; };
@@ -998,8 +991,8 @@
 		1871F08319CD65450041CC93 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				1871F08419CD65450041CC93 /* G4ViewController.h */,
-				1871F08519CD65450041CC93 /* G4ViewController.m */,
+				1871F08419CD65450041CC93 /* LoginViewController.h */,
+				1871F08519CD65450041CC93 /* LoginViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1072,7 +1065,6 @@
 				89D0DC0119C5EDAD0072F1F0 /* Resources */,
 				8951C0EE19C48E8600E355EB /* Models */,
 				89FBF94B19B3642C00B78082 /* config */,
-				89CA10A719AF851900E00AA5 /* Login.storyboard */,
 				89CA10AD19AF851900E00AA5 /* Images.xcassets */,
 				89CA109C19AF851900E00AA5 /* Supporting Files */,
 				89D0DD5E19C5EF280072F1F0 /* G4Define.h */,
@@ -1824,9 +1816,6 @@
 				89D0DDF419C5F0420072F1F0 /* Core Data */,
 				89D0DE3619C5F0430072F1F0 /* G4AppDelegate.h */,
 				89D0DE3719C5F0430072F1F0 /* G4AppDelegate.m */,
-				89D0DE3A19C5F0430072F1F0 /* LoginViewController.h */,
-				89D0DE3B19C5F0430072F1F0 /* LoginViewController.m */,
-				89D0DE3C19C5F0430072F1F0 /* LoginViewController.xib */,
 				89D0DE3D19C5F0430072F1F0 /* MainViewController.h */,
 				89D0DE3E19C5F0430072F1F0 /* MainViewController.m */,
 				89D0DE3F19C5F0430072F1F0 /* Settings */,
@@ -2449,7 +2438,6 @@
 				89D0DE7119C5F0430072F1F0 /* chatBar_colorMore_video@2x.png in Resources */,
 				89D0DD2D19C5EDAE0072F1F0 /* password@2x.png in Resources */,
 				89D0DD3619C5EDAE0072F1F0 /* tabbar_contactsHL.png in Resources */,
-				89D0DEC419C5F0430072F1F0 /* LoginViewController.xib in Resources */,
 				89D0DE5C19C5F0430072F1F0 /* chatBar_keyboard@2x.png in Resources */,
 				89D0DD0519C5EDAE0072F1F0 /* chatBar_more_face@2x.png in Resources */,
 				89D0DE7019C5F0430072F1F0 /* chatBar_colorMore_photoSelected@2x.png in Resources */,
@@ -2499,7 +2487,6 @@
 				89D0DCEE19C5EDAE0072F1F0 /* VoiceSearchFeedback012@2x.png in Resources */,
 				89D0DD0E19C5EDAE0072F1F0 /* chat_location_detail_disclosureHL.png in Resources */,
 				89D0DCF119C5EDAE0072F1F0 /* VoiceSearchFeedback014.png in Resources */,
-				89CA10A919AF851900E00AA5 /* Login.storyboard in Resources */,
 				89D0DD2719C5EDAE0072F1F0 /* chat_sender_audio_playing_full@2x.png in Resources */,
 				89D0DD1019C5EDAE0072F1F0 /* chat_location_preview.png in Resources */,
 				89D0DE7619C5F0430072F1F0 /* chatBar_more_cameraSelected@2x.png in Resources */,
@@ -2606,7 +2593,7 @@
 				89CA10A219AF851900E00AA5 /* main.m in Sources */,
 				8951C0F719C48E8600E355EB /* CustomAnnotationView.m in Sources */,
 				89D0DED819C5F0E00072F1F0 /* NSDateFormatter+Category.m in Sources */,
-				1871F08619CD65450041CC93 /* G4ViewController.m in Sources */,
+				1871F08619CD65450041CC93 /* LoginViewController.m in Sources */,
 				89D0DD5819C5EE1B0072F1F0 /* EMRemarkImageView.m in Sources */,
 				8951C0F819C48E8600E355EB /* CustomCalloutView.m in Sources */,
 				89D0DE8F19C5F0430072F1F0 /* ContactSelectionViewController.m in Sources */,
@@ -2619,7 +2606,6 @@
 				89D0DE9C19C5F0430072F1F0 /* ChineseToPinyin.m in Sources */,
 				89D0DD5A19C5EE1B0072F1F0 /* EMChooseViewController.m in Sources */,
 				89D0DE4A19C5F0430072F1F0 /* ChatListViewController.m in Sources */,
-				89D0DEC319C5F0430072F1F0 /* LoginViewController.m in Sources */,
 				1871F08219CD61000041CC93 /* MKMapViewUtil.m in Sources */,
 				89D0DEC919C5F0430072F1F0 /* SettingsViewController.m in Sources */,
 				89D0DE4C19C5F0430072F1F0 /* ChatViewController.m in Sources */,
@@ -2724,14 +2710,6 @@
 				89CA109F19AF851900E00AA5 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		89CA10A719AF851900E00AA5 /* Login.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				89CA10A819AF851900E00AA5 /* Base */,
-			);
-			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 		89CA10BD19AF851900E00AA5 /* InfoPlist.strings */ = {
