@@ -22,6 +22,7 @@ PODS:
     - AFNetworking/NSURLSession
   - CocoaSecurity (1.2.4)
   - DACircularProgress (2.2.0)
+  - JSONModel (1.0.1)
   - MBProgressHUD (0.9)
   - MWPhotoBrowser (1.4.0):
     - DACircularProgress
@@ -38,6 +39,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - JSONModel
   - MBProgressHUD (~> 0.8)
   - MWPhotoBrowser
   - NSUserDefaults-AESEncryptor
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   CocoaSecurity: 7ce1b967863d4e96dcffdbad17671117900e6c6e
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
+  JSONModel: 634100aaacbd89811bc8a03da209356e5989c569
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MWPhotoBrowser: 4efcdb9da34751f97992128a5356f3929d1af537
   NSUserDefaults-AESEncryptor: 913075da1eab9af8421957d11ab0ea775d536912

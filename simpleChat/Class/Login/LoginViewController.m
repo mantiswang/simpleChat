@@ -103,6 +103,16 @@
              NSLog(@"登录成功");
              [[NSUserDefaults standardUserDefaults] encryptValue:username withKey:kUsername];
              [[NSUserDefaults standardUserDefaults] encryptValue:password withKey:kPassword];
+             
+             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+             NSString *paramString = [NSString stringWithFormat:@"{'uname':'%@','pword':'%@','longitude':'%@', 'latitude':'%@'}", username, password, @"117.173223", @"31.834711"];
+             NSDictionary *parameters = @{@"param": paramString, @"action":@"A001"};
+             [manager POST:@"http://192.168.1.101:8080/alone/api/test" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 NSLog(@"JSON: %@", responseObject);
+             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 NSLog(@"Error: %@", error);
+             }];
+             
              [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
          }else{
              NSString *message = nil;

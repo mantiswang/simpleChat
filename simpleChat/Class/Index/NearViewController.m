@@ -45,15 +45,15 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.mapView.showsUserLocation = YES;    //YES 为打开定位，NO为关闭定位
-    
-    [self.mapView setUserTrackingMode: MAUserTrackingModeFollow animated:YES];//地图跟着位置移动
 }
 
 - (void)initMapView
 {
     self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.delegate = self;
+    self.mapView.desiredAccuracy = kCLLocationAccuracyNearestTenMeters; //100m
+    self.mapView.showsUserLocation = YES;  //YES 为打开定位，NO为关闭定位
+    [self.mapView setUserTrackingMode:MAUserTrackingModeFollow animated:YES];//地图跟着位置移动
     [self.view addSubview:self.mapView];
 
 }

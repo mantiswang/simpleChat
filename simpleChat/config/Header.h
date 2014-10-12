@@ -26,5 +26,6 @@
 
 
 #import "AFNetworking.h"
+#import "JSONModel.h"
 
 #endif
